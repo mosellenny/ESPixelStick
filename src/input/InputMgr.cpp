@@ -739,8 +739,11 @@ void c_InputMgr::Process ()
         if (false == aBlankTimerIsRunning && config.BlankDelay != 0)
         {
             // DEBUG_V("Clear Input Buffer");
-            OutputMgr.ClearBuffer ();
-            RestartBlankTimer (InputSecondaryChannelId);
+            OutputMgr.ClearBuffer();
+            // Why do we need to restart the BlankTimer after blanking
+            // We restart it when we recieve data
+            // RestartBlankTimer (InputSecondaryChannelId);
+            OutputMgr.PauseOutputs(true);
         } // ALL blank timers have expired
 
         if (rebootNeeded)
