@@ -1073,9 +1073,11 @@ void c_InputMgr::NetworkStateChanged (bool _IsConnected)
 //-----------------------------------------------------------------------------
 void c_InputMgr::RestartDmxOutputTimer() 
 { 
-    DEBUG_V(String("Restarting DMX Output"));
     DmxOutputEndTimer.StartTimer(10000, false);
     
+    if (DmxOutputActive)
+        return;
+
     DmxOutputActive = true;
     digitalWrite(DmxEnablePin, HIGH);
 } // RestartDmxOutputTimer
