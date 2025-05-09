@@ -65,7 +65,7 @@ public:
     void GetDriverName        (String & Name) { Name = "InputMgr"; }
     // void RestartBlankTimer    (e_InputChannelIds Selector) { BlankEndTime[int(Selector)].StartTimer(config.BlankDelay * 1000, false); }
     // bool BlankTimerHasExpired (e_InputChannelIds Selector) { return (BlankEndTime[int(Selector)].IsExpired()); }
-    void c_InputMgr::RestartDmxOutputTimer() 
+    void RestartDmxOutputTimer() 
     { 
         DmxOutputEndTimer.StartTimer(5000, false);
         
