@@ -1,0 +1,26 @@
+<map id="c_InputAlexa::Begin" name="c_InputAlexa::Begin">
+<area shape="rect" id="Node000001" title="set up the operating environment based on the current config (or defaults)" alt="" coords="5,212,141,238"/>
+<area shape="rect" id="Node000002" href="$classc___input_common.html#ab048d5e7494a1f0f2b56ac04d1fab490" title="set up the operating environment based on the current config (or defaults)" alt="" coords="221,136,376,162"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,209,140,189,188,170,211,163,213,168,190,175,142,194,101,214"/>
+<area shape="rect" id="Node000003" href="$classc___input_alexa.html#adf1dcecdbc97eb955ad2ca3954678c80" title=" " alt="" coords="214,185,383,211"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,214,198,207,199,213,141,219"/>
+<area shape="rect" id="Node000009" href="$classc___input_common.html#a1649cd7444c3219b37fd8627754e2e56" title=" " alt="" coords="456,243,664,284"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="141,228,441,251,440,257,141,233"/>
+<area shape="rect" id="Node000011" href="$classc___web_mgr.html#aaad811dbabf3626c6ddb95f13f301f7f" title=" " alt="" coords="189,301,408,327"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="104,236,190,273,244,293,242,298,188,278,102,241"/>
+<area shape="rect" id="Node000004" href="$classc___output_mgr.html#a7471954d6a26b6894c4066a424d8aec8" title=" " alt="" coords="477,29,643,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="382,186,406,172,418,160,424,147,429,120,435,92,442,78,454,64,462,59,465,63,458,68,446,81,440,93,435,121,429,149,422,163,410,176,385,191"/>
+<area shape="rect" id="Node000007" href="$_safer_string_conversion_8hpp.html#abaa5f3baa5ae9ae6df677674285ab8da" title=" " alt="" coords="470,79,650,104"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="382,183,407,172,421,158,430,144,438,128,454,113,463,109,466,113,458,118,443,131,434,146,426,162,409,176,385,188"/>
+<area shape="rect" id="Node000008" href="$classc___input_common.html#a91676b3553f3a5b06361d43c2a81d45e" title="Set a new config in the driver." alt="" coords="471,128,649,154"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="360,182,483,155,484,160,361,187"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="353,209,462,236,461,241,352,214"/>
+<area shape="rect" id="Node000010" href="$classc___input_mgr.html#a8a195063dcc63c1fd8de7c14ab3bf0a2" title=" " alt="" coords="471,178,649,218"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="383,196,455,196,455,201,383,201"/>
+<area shape="rect" id="Node000005" href="$classc___output_mgr.html#aec62685e8fb4eff73bfefd3ed5321b01" title="Get the address of the buffer into which the E1.31 handler will stuff data." alt="" coords="712,5,918,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="643,32,697,27,697,32,644,37"/>
+<area shape="rect" id="Node000006" href="$classc___output_mgr.html#abc896c708fce43b559a42ba4e67c9976" title="Get the size (in intensities) of the buffer into which the E1.31 handler will stuff data." alt="" coords="724,55,906,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="644,48,709,54,708,60,643,53"/>
+<area shape="rect" id="Node000012" href="$classc___web_mgr.html#a680165d31d7cd22afde779f25e6a4067" title=" " alt="" coords="469,308,651,349"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="409,318,453,320,453,326,408,323"/>
+</map>
