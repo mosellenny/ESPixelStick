@@ -1,25 +1,31 @@
 #pragma once
 /*
-* E131Input.h - Code to wrap ESPAsyncE131 for input
-*
-* Project: ESPixelStick - An ESP8266 / ESP32 and E1.31 based pixel driver
-* Copyright (c) 2021, 2025 Shelby Merrick
-* http://www.forkineye.com
-*
-*  This program is provided free for you to use in any way that you wish,
-*  subject to the laws and regulations where you are using it.  Due diligence
-*  is strongly suggested before using this code.  Please give credit where due.
-*
-*  The Author makes no warranty of any kind, express or implied, with regard
-*  to this program or the documentation contained in this document.  The
-*  Author shall not be liable in any event for incidental or consequential
-*  damages in connection with, or arising out of, the furnishing, performance
-*  or use of these programs.
-*
-*/
+ * E131Input.h - Code to wrap ESPAsyncE131 for input
+ *
+ * Project: ESPixelStick - An ESP8266 / ESP32 and E1.31 based pixel driver
+ * Copyright (c) 2021, 2025 Shelby Merrick
+ * http://www.forkineye.com
+ *
+ *  This program is provided free for you to use in any way that you wish,
+ *  subject to the laws and regulations where you are using it.  Due diligence
+ *  is strongly suggested before using this code.  Please give credit where due.
+ *
+ *  The Author makes no warranty of any kind, express or implied, with regard
+ *  to this program or the documentation contained in this document.  The
+ *  Author shall not be liable in any event for incidental or consequential
+ *  damages in connection with, or arising out of, the furnishing, performance
+ *  or use of these programs.
+ *
+ */
 
 #include "InputCommon.hpp"
 #include <ESPAsyncE131.h>
+#include <Arduino.h>  // für pinMode(), digitalWrite(), millis()
+
+// Pin für DE am MAX485 (z.B. D2 am Wemos D1 mini)
+#ifndef TX_ENABLE_PIN
+#  define TX_ENABLE_PIN D2
+#endif
 
 class c_InputE131 : public c_InputCommon
 {
@@ -29,7 +35,6 @@ class c_InputE131 : public c_InputCommon
     static const uint8_t    MAX_NUM_UNIVERSES = (OM_MAX_NUM_CHANNELS / UNIVERSE_MAX) + 1;
 
     ESPAsyncE131  * e131 = nullptr; ///< ESPAsyncE131
-    // e131_packet_t packet;           ///< Packet buffer for parsing
 
     /// JSON configuration parameters
     uint16_t    startUniverse              = 1;    ///< Universe to listen for
@@ -53,8 +58,12 @@ class c_InputE131 : public c_InputCommon
     Universe_t UniverseArray[MAX_NUM_UNIVERSES];
 
     void validateConfiguration ();
-    void NetworkStateChanged (bool IsConnected, bool RebootAllowed); // used by poorly designed rx functions
+    void NetworkStateChanged (bool IsConnected, bool RebootAllowed);
     void SetBufferTranslation ();
+
+    // Watchdog für sACN-Pakete
+    uint32_t lastPacketTime = 0;                  ///< Zeitpunkt des letzten empfangenen Pakets
+    static const uint32_t PACKET_TIMEOUT_MS = 2000; ///< Timeout in ms (hier 2 s)
 
   public:
 
@@ -63,15 +72,14 @@ class c_InputE131 : public c_InputCommon
                  uint32_t                        BufferSize);
     virtual ~c_InputE131();
 
-    // functions to be provided by the derived class
-    void Begin ();                                          ///< set up the operating environment based on the current config (or defaults)
-    bool SetConfig (JsonObject & jsonConfig);   ///< Set a new config in the driver
-    void GetConfig (JsonObject & jsonConfig);   ///< Get the current config used by the driver
+    void Begin ();
+    bool SetConfig (JsonObject & jsonConfig);
+    void GetConfig (JsonObject & jsonConfig);
     void GetStatus (JsonObject & jsonStatus);
     void Process   ();
-    void GetDriverName (String & sDriverName) { sDriverName = "E1.31"; } ///< get the name for the instantiated driver
+    void GetDriverName (String & sDriverName) { sDriverName = "E1.31"; }
     void SetBufferInfo (uint32_t BufferSize);
-    void NetworkStateChanged (bool IsConnected); // used by poorly designed rx functions
+    void NetworkStateChanged (bool IsConnected);
     bool isShutDownRebootNeeded () { return HasBeenInitialized; }
     void ProcessIncomingE131Data (e131_packet_t *);
 };
