@@ -1,3 +1,4 @@
+// input/InputE131.hpp
 #pragma once
 /*
  * E131Input.h - Code to wrap ESPAsyncE131 for input
@@ -5,17 +6,6 @@
  * Project: ESPixelStick - An ESP8266 / ESP32 and E1.31 based pixel driver
  * Copyright (c) 2021, 2025 Shelby Merrick
  * http://www.forkineye.com
- *
- *  This program is provided free for you to use in any way that you wish,
- *  subject to the laws and regulations where you are using it.  Due diligence
- *  is strongly suggested before using this code.  Please give credit where due.
- *
- *  The Author makes no warranty of any kind, express or implied, with regard
- *  to this program or the documentation contained in this document.  The
- *  Author shall not be liable in any event for incidental or consequential
- *  damages in connection with, or arising out of, the furnishing, performance
- *  or use of these programs.
- *
  */
 
 #include "InputCommon.hpp"
@@ -34,20 +24,23 @@ class c_InputE131 : public c_InputCommon
     static const char       ConfigFileName[];
     static const uint8_t    MAX_NUM_UNIVERSES = (OM_MAX_NUM_CHANNELS / UNIVERSE_MAX) + 1;
 
-   ESPAsyncE131  * e131 = nullptr; ///< ESPAsyncE131
-+  bool            e131Enabled = false;  ///< true, wenn wir erfolgreich Kanäle registriert haben
+    ESPAsyncE131  * e131 = nullptr;        ///< ESPAsyncE131
 
+    // Flag, ob E1.31 wirklich initialisiert wurde
+    bool            e131Enabled = false;
+    // Letzter Pin-Zustand, um nur bei Wechsel digitalWrite aufzurufen
+    bool            lastDeState = true;
 
     /// JSON configuration parameters
-    uint16_t    startUniverse              = 1;    ///< Universe to listen for
-    uint16_t    LastUniverse               = 1;    ///< Last Universe to listen for
-    uint16_t    ChannelsPerUniverse        = 512;  ///< Universe boundary limit
-    uint16_t    FirstUniverseChannelOffset = 1;    ///< Channel to start listening at - 1 based
+    uint16_t    startUniverse              = 1;
+    uint16_t    LastUniverse               = 1;
+    uint16_t    ChannelsPerUniverse        = 512;
+    uint16_t    FirstUniverseChannelOffset = 1;
     ESPAsyncE131PortId PortId              = E131_DEFAULT_PORT;
     bool        ESPAsyncE131Initialized    = false;
 
     /// from sketch globals
-    uint16_t    channel_count = 0;       ///< Number of channels. Derived from output module configuration.
+    uint16_t    channel_count = 0;
 
     struct Universe_t
     {
@@ -64,11 +57,10 @@ class c_InputE131 : public c_InputCommon
     void SetBufferTranslation ();
 
     // Watchdog für sACN-Pakete
-    uint32_t lastPacketTime = 0;                  ///< Zeitpunkt des letzten empfangenen Pakets
-    static const uint32_t PACKET_TIMEOUT_MS = 5000; ///< Timeout in ms (hier 2 s)
+    uint32_t lastPacketTime = 0;
+    static const uint32_t PACKET_TIMEOUT_MS = 2000;
 
   public:
-
     c_InputE131 (c_InputMgr::e_InputChannelIds NewInputChannelId,
                  c_InputMgr::e_InputType       NewChannelType,
                  uint32_t                        BufferSize);
