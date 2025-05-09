@@ -20,6 +20,7 @@ var classc___input_e131 =
     [ "ChannelsPerUniverse", "classc___input_e131.html#a694114aaade169546c0159e38893ff82", null ],
     [ "ConfigFileName", "classc___input_e131.html#a2e1497abda0077f3f214bccf82e5bbf8", null ],
     [ "e131", "classc___input_e131.html#ae53831a0c135a8a1d2a58af3eaa60028", null ],
+    [ "e131Enabled", "classc___input_e131.html#a7aacde3f59cde50fe79681ae5ba6cf9c", null ],
     [ "ESPAsyncE131Initialized", "classc___input_e131.html#aa4179bfb941ebd349a5491ae52b62f51", null ],
     [ "FirstUniverseChannelOffset", "classc___input_e131.html#aaba50fb4e866dde86caa60439469ab13", null ],
     [ "lastPacketTime", "classc___input_e131.html#a3014f71298957c7968fafd9904f521e4", null ],
