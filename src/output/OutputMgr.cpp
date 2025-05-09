@@ -1456,9 +1456,6 @@ void c_OutputMgr::PauseOutputs(bool PauseTheOutput)
 
     for (DriverInfo_t & CurrentOutput : OutputChannelDrivers)
     {
-        if (nullptr == CurrentOutput.pOutputChannelDriver)
-            continue;
-            
         CurrentOutput.pOutputChannelDriver->PauseOutput(PauseTheOutput);
     }
 

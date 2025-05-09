@@ -125,11 +125,6 @@ c_InputMgr::c_InputMgr ()
         EffectEngineIsConfiguredToRun[pInputChannelDriversIndex] = false;
         ++pInputChannelDriversIndex;
     }
-
-    // initialize dmx pin
-    ResetGpio(DmxEnablePin);
-    pinMode(DmxEnablePin, OUTPUT);
-
 } // c_InputMgr
 
 //-----------------------------------------------------------------------------
@@ -197,6 +192,10 @@ void c_InputMgr::Begin (uint32_t BufferSize)
 #else
     MsTicker.attach_ms (uint32_t (FPP_TICKER_PERIOD_MS), &TimerPollHandler); // Add Timer Function
 #endif // ! defined ARDUINO_ARCH_ESP32
+
+    // initialize dmx pin
+    ResetGpio(DmxEnablePin);
+    pinMode(DmxEnablePin, OUTPUT);
 
     HasBeenInitialized = true;
 
@@ -1075,18 +1074,6 @@ void c_InputMgr::NetworkStateChanged (bool _IsConnected)
 
     // DEBUG_END;
 } // NetworkStateChanged
-
-//-----------------------------------------------------------------------------
-void c_InputMgr::RestartDmxOutputTimer() 
-{ 
-    DmxOutputEndTimer.StartTimer(5000, false);
-    
-    if (DmxOutputActive)
-        return;
-
-    DmxOutputActive = true;
-    digitalWrite(DmxEnablePin, HIGH);
-} // RestartDmxOutputTimer
 
 // create a global instance of the Input channel factory
 c_InputMgr InputMgr;

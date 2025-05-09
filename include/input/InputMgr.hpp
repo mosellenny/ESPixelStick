@@ -65,7 +65,16 @@ public:
     void GetDriverName        (String & Name) { Name = "InputMgr"; }
     // void RestartBlankTimer    (e_InputChannelIds Selector) { BlankEndTime[int(Selector)].StartTimer(config.BlankDelay * 1000, false); }
     // bool BlankTimerHasExpired (e_InputChannelIds Selector) { return (BlankEndTime[int(Selector)].IsExpired()); }
-    void RestartDmxOutputTimer();
+    void c_InputMgr::RestartDmxOutputTimer() 
+    { 
+        DmxOutputEndTimer.StartTimer(5000, false);
+        
+        if (DmxOutputActive)
+            return;
+
+        DmxOutputActive = true;
+        digitalWrite(DmxEnablePin, HIGH);
+    } // RestartDmxOutputTimer
     bool DmxOutputTimerHasExpired () { return (DmxOutputEndTimer.IsExpired()); }
     void ProcessButtonActions (c_ExternalInput::InputValue_t value);
 
