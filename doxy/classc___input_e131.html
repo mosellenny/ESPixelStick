@@ -202,19 +202,17 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:ae53831a0c135a8a1d2a58af3eaa60028"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESPAsyncE131.  <br /></td></tr>
 <tr class="separator:ae53831a0c135a8a1d2a58af3eaa60028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aacde3f59cde50fe79681ae5ba6cf9c" id="r_a7aacde3f59cde50fe79681ae5ba6cf9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7aacde3f59cde50fe79681ae5ba6cf9c">e131Enabled</a> = false</td></tr>
-<tr class="memdesc:a7aacde3f59cde50fe79681ae5ba6cf9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">true, wenn wir erfolgreich Kanäle registriert haben  <br /></td></tr>
 <tr class="separator:a7aacde3f59cde50fe79681ae5ba6cf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a353b99148dfea8c98f685048c13f7999" id="r_a353b99148dfea8c98f685048c13f7999"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a353b99148dfea8c98f685048c13f7999">lastDeState</a> = true</td></tr>
+<tr class="separator:a353b99148dfea8c98f685048c13f7999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fbb82c35c018fc002d2322ba7f7be9f" id="r_a3fbb82c35c018fc002d2322ba7f7be9f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fbb82c35c018fc002d2322ba7f7be9f">startUniverse</a> = 1</td></tr>
 <tr class="memdesc:a3fbb82c35c018fc002d2322ba7f7be9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">JSON configuration parameters.  <br /></td></tr>
 <tr class="separator:a3fbb82c35c018fc002d2322ba7f7be9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fff1e1beebab865c317759ec5b3867" id="r_a02fff1e1beebab865c317759ec5b3867"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02fff1e1beebab865c317759ec5b3867">LastUniverse</a> = 1</td></tr>
-<tr class="memdesc:a02fff1e1beebab865c317759ec5b3867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last Universe to listen for.  <br /></td></tr>
 <tr class="separator:a02fff1e1beebab865c317759ec5b3867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a694114aaade169546c0159e38893ff82" id="r_a694114aaade169546c0159e38893ff82"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a694114aaade169546c0159e38893ff82">ChannelsPerUniverse</a> = 512</td></tr>
-<tr class="memdesc:a694114aaade169546c0159e38893ff82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Universe boundary limit.  <br /></td></tr>
 <tr class="separator:a694114aaade169546c0159e38893ff82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba50fb4e866dde86caa60439469ab13" id="r_aaba50fb4e866dde86caa60439469ab13"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaba50fb4e866dde86caa60439469ab13">FirstUniverseChannelOffset</a> = 1</td></tr>
-<tr class="memdesc:aaba50fb4e866dde86caa60439469ab13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Channel to start listening at - 1 based.  <br /></td></tr>
 <tr class="separator:aaba50fb4e866dde86caa60439469ab13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52cf81d70ad8626a2271159f4d543f26" id="r_a52cf81d70ad8626a2271159f4d543f26"><td class="memItemLeft" align="right" valign="top">ESPAsyncE131PortId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52cf81d70ad8626a2271159f4d543f26">PortId</a> = E131_DEFAULT_PORT</td></tr>
 <tr class="separator:a52cf81d70ad8626a2271159f4d543f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,7 +224,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af6a61e337351f87db42592d96bb1a295" id="r_af6a61e337351f87db42592d96bb1a295"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structc___input_e131_1_1_universe__t.html">Universe_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6a61e337351f87db42592d96bb1a295">UniverseArray</a> [<a class="el" href="#ac0aae26f37068d38277b8badf236480a">MAX_NUM_UNIVERSES</a>]</td></tr>
 <tr class="separator:af6a61e337351f87db42592d96bb1a295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3014f71298957c7968fafd9904f521e4" id="r_a3014f71298957c7968fafd9904f521e4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3014f71298957c7968fafd9904f521e4">lastPacketTime</a> = 0</td></tr>
-<tr class="memdesc:a3014f71298957c7968fafd9904f521e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeitpunkt des letzten empfangenen Pakets.  <br /></td></tr>
 <tr class="separator:a3014f71298957c7968fafd9904f521e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
@@ -237,8 +234,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a2e1497abda0077f3f214bccf82e5bbf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0aae26f37068d38277b8badf236480a" id="r_ac0aae26f37068d38277b8badf236480a"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0aae26f37068d38277b8badf236480a">MAX_NUM_UNIVERSES</a> = (<a class="el" href="_output_mgr_8hpp.html#a2950110c970b04d476d45273635a5d85">OM_MAX_NUM_CHANNELS</a> / <a class="el" href="#a0efd4777954cf24cb0a8e46dc768d396">UNIVERSE_MAX</a>) + 1</td></tr>
 <tr class="separator:ac0aae26f37068d38277b8badf236480a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e7fe066cd6ce75f68c7832fe49bdb28" id="r_a2e7fe066cd6ce75f68c7832fe49bdb28"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e7fe066cd6ce75f68c7832fe49bdb28">PACKET_TIMEOUT_MS</a> = 5000</td></tr>
-<tr class="memdesc:a2e7fe066cd6ce75f68c7832fe49bdb28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout in ms (hier 2 s)  <br /></td></tr>
+<tr class="memitem:a2e7fe066cd6ce75f68c7832fe49bdb28" id="r_a2e7fe066cd6ce75f68c7832fe49bdb28"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e7fe066cd6ce75f68c7832fe49bdb28">PACKET_TIMEOUT_MS</a> = 2000</td></tr>
 <tr class="separator:a2e7fe066cd6ce75f68c7832fe49bdb28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -847,7 +843,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>from sketch globals </p>
-<p>Number of channels. Derived from output module configuration. </p>
 
 </div>
 </div>
@@ -870,8 +865,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Universe boundary limit. </p>
 
 </div>
 </div>
@@ -941,8 +934,6 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>true, wenn wir erfolgreich Kanäle registriert haben </p>
-
 </div>
 </div>
 <a id="aa4179bfb941ebd349a5491ae52b62f51" name="aa4179bfb941ebd349a5491ae52b62f51"></a>
@@ -987,7 +978,27 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Channel to start listening at - 1 based. </p>
+</div>
+</div>
+<a id="a353b99148dfea8c98f685048c13f7999" name="a353b99148dfea8c98f685048c13f7999"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a353b99148dfea8c98f685048c13f7999">&#9670;&#160;</a></span>lastDeState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool c_InputE131::lastDeState = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1011,8 +1022,6 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Zeitpunkt des letzten empfangenen Pakets. </p>
-
 </div>
 </div>
 <a id="a02fff1e1beebab865c317759ec5b3867" name="a02fff1e1beebab865c317759ec5b3867"></a>
@@ -1034,8 +1043,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Last Universe to listen for. </p>
 
 </div>
 </div>
@@ -1071,7 +1078,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint32_t c_InputE131::PACKET_TIMEOUT_MS = 5000</td>
+          <td class="memname">const uint32_t c_InputE131::PACKET_TIMEOUT_MS = 2000</td>
         </tr>
       </table>
   </td>
@@ -1080,8 +1087,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Timeout in ms (hier 2 s) </p>
 
 </div>
 </div>
@@ -1128,7 +1133,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>JSON configuration parameters. </p>
-<p>Universe to listen for </p>
 
 </div>
 </div>

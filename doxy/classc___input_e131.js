@@ -23,6 +23,7 @@ var classc___input_e131 =
     [ "e131Enabled", "classc___input_e131.html#a7aacde3f59cde50fe79681ae5ba6cf9c", null ],
     [ "ESPAsyncE131Initialized", "classc___input_e131.html#aa4179bfb941ebd349a5491ae52b62f51", null ],
     [ "FirstUniverseChannelOffset", "classc___input_e131.html#aaba50fb4e866dde86caa60439469ab13", null ],
+    [ "lastDeState", "classc___input_e131.html#a353b99148dfea8c98f685048c13f7999", null ],
     [ "lastPacketTime", "classc___input_e131.html#a3014f71298957c7968fafd9904f521e4", null ],
     [ "LastUniverse", "classc___input_e131.html#a02fff1e1beebab865c317759ec5b3867", null ],
     [ "MAX_NUM_UNIVERSES", "classc___input_e131.html#ac0aae26f37068d38277b8badf236480a", null ],
