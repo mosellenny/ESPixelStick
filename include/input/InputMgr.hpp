@@ -129,7 +129,7 @@ private:
     uint32_t  LastTickerTimeStampMS = 0;
 
     bool DmxOutputActive = true;
-    gpio_num_t DmxEnablePin = gpio_num_t(0);
+    const gpio_num_t DmxEnablePin = gpio_num_t(0);
 
 }; // c_InputMgr
 

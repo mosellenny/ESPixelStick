@@ -755,7 +755,7 @@ void c_InputMgr::Process ()
 
         if (false == aDmxOutputTimerIsRunning && DmxOutputActive)
         {
-            DEBUG_V("Shut down DMX Output now");
+            DEBUG_V(String("Shut down DMX Output now"));
             DmxOutputActive = false;
             digitalWrite(DmxEnablePin, LOW);
         }
@@ -1073,7 +1073,7 @@ void c_InputMgr::NetworkStateChanged (bool _IsConnected)
 //-----------------------------------------------------------------------------
 void c_InputMgr::RestartDmxOutputTimer() 
 { 
-    DmxOutputEndTimer.StartTimer(10000, false);
+    DmxOutputEndTimer.StartTimer(5000, false);
     
     if (DmxOutputActive)
         return;
