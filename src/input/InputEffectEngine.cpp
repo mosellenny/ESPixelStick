@@ -365,7 +365,7 @@ void c_InputEffectEngine::Process ()
             EffectDelayTimer.StartTimer(EffectWait, true);
         }
         EffectCounter++;
-        InputMgr.RestartBlankTimer (GetInputChannelId ());
+        // InputMgr.RestartBlankTimer (GetInputChannelId ());
         InputMgr.RestartDmxOutputTimer();
 
         PollFlash();
@@ -428,7 +428,7 @@ void c_InputEffectEngine::Poll ()
         }
         // // DEBUG_V("Update Blank timer");
         EffectCounter++;
-        InputMgr.RestartBlankTimer (GetInputChannelId ());
+        // InputMgr.RestartBlankTimer (GetInputChannelId ());
         InputMgr.RestartDmxOutputTimer();
 
         // // DEBUG_V("Check Flash operation");

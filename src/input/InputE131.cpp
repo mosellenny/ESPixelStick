@@ -177,7 +177,7 @@ void c_InputE131::ProcessIncomingE131Data (e131_packet_t * packet)
                    &E131Data[CurrentUniverse.SourceDataOffset],
                    min(CurrentUniverse.BytesToCopy, NumBytesOfE131Data));
 */
-            InputMgr.RestartBlankTimer (GetInputChannelId ());
+            // InputMgr.RestartBlankTimer (GetInputChannelId ());
             InputMgr.RestartDmxOutputTimer();
         }
         else

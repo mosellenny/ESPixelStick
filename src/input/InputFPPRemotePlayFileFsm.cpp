@@ -298,7 +298,7 @@ bool fsm_PlayFile_state_PlayingFile::Poll ()
         uint32_t CurrentOutputBufferOffset = 0;
         ///DEBUG_V (String ("               MaxBytesToRead: ") + String (MaxBytesToRead));
 
-        InputMgr.RestartBlankTimer (p_Parent->GetInputChannelId ());
+        // InputMgr.RestartBlankTimer (p_Parent->GetInputChannelId ());
         InputMgr.RestartDmxOutputTimer();
         ///DEBUG_V();
 

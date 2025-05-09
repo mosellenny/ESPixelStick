@@ -721,6 +721,7 @@ void c_InputMgr::Process ()
             break;
         }
 
+        /*
         bool aBlankTimerIsRunning = false;
         for (auto & CurrentInput : InputChannelDrivers)
         {
@@ -746,7 +747,8 @@ void c_InputMgr::Process ()
             OutputMgr.ClearBuffer();
             RestartBlankTimer (InputSecondaryChannelId);
         } // ALL blank timers have expired
-
+        */
+       
         bool aDmxOutputTimerIsRunning = false;
         for (auto & CurrentInput : InputChannelDrivers)
         {
