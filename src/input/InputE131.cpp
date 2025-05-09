@@ -39,23 +39,31 @@ c_InputE131::~c_InputE131()
 //-----------------------------------------------------------------------------
 void c_InputE131::Begin ()
 {
-    do // once
-    {
-        validateConfiguration();
+    // erst Config validieren, damit LastUniverse stimmt
+    validateConfiguration();
 
-        e131->registerCallback((void*)this, [](e131_packet_t* Packet, void* pThis) {
-            ((c_InputE131*)pThis)->ProcessIncomingE131Data(Packet);
-        });
+    // nur wenn mindestens 1 Kanal zu listen ist:
+    if (InputDataBufferSize == 0 || LastUniverse < startUniverse) {
+        logcon(F("E1.31: keine gültigen Kanäle konfiguriert, überspringe Init"));
+        e131Enabled = false;
+        return;
+    }
 
-        NetworkStateChanged(NetworkMgr.IsConnected(), false);
+    // alles OK, Callback und Listener anwerfen
+    e131->registerCallback((void*)this, [](e131_packet_t* Packet, void* pThis) {
+        ((c_InputE131*)pThis)->ProcessIncomingE131Data(Packet);
+    });
 
-        // GPIO für DE initialisieren
-        pinMode(TX_ENABLE_PIN, OUTPUT);
-        digitalWrite(TX_ENABLE_PIN, HIGH);  // DMX-Ausgang standardmäßig aktiviert
+    NetworkStateChanged(NetworkMgr.IsConnected(), false);
 
-        HasBeenInitialized = true;
-    } while (false);
+    // GPIO für DE initialisieren
+    pinMode(TX_ENABLE_PIN, OUTPUT);
+    digitalWrite(TX_ENABLE_PIN, HIGH);
+
+    e131Enabled = true;
+    HasBeenInitialized = true;
 }
+
 
 //-----------------------------------------------------------------------------
 void c_InputE131::GetConfig (JsonObject & jsonConfig)
@@ -92,15 +100,13 @@ void c_InputE131::GetStatus (JsonObject & jsonStatus)
 //-----------------------------------------------------------------------------
 void c_InputE131::Process ()
 {
-    // Watchdog prüfen und GPIO entsprechend setzen
+    if (!e131Enabled) return;   // nur aktiv, wenn wir erfolgreich initialisiert haben
+
     uint32_t now = millis();
-    if (now - lastPacketTime > PACKET_TIMEOUT_MS)
-    {
-        digitalWrite(TX_ENABLE_PIN, LOW);   // kein sACN → DMX deaktivieren
-    }
-    else
-    {
-        digitalWrite(TX_ENABLE_PIN, HIGH);  // sACN aktiv → DMX aktivieren
+    if (now - lastPacketTime > PACKET_TIMEOUT_MS) {
+        digitalWrite(TX_ENABLE_PIN, LOW);
+    } else {
+        digitalWrite(TX_ENABLE_PIN, HIGH);
     }
 }
 
