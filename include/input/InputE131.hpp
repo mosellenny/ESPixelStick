@@ -63,7 +63,7 @@ class c_InputE131 : public c_InputCommon
 
     // Watchdog für sACN-Pakete
     uint32_t lastPacketTime = 0;                  ///< Zeitpunkt des letzten empfangenen Pakets
-    static const uint32_t PACKET_TIMEOUT_MS = 2000; ///< Timeout in ms (hier 2 s)
+    static const uint32_t PACKET_TIMEOUT_MS = 5000; ///< Timeout in ms (hier 2 s)
 
   public:
 
