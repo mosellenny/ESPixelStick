@@ -128,8 +128,8 @@ private:
     Ticker    MsTicker;
     uint32_t  LastTickerTimeStampMS = 0;
 
-    bool DmxOutputActive = true;
-    const gpio_num_t DmxEnablePin = gpio_num_t(0);
+    bool DmxOutputActive = false;
+    const gpio_num_t DmxEnablePin = GPIO_NUM_0;
 
 }; // c_InputMgr
 

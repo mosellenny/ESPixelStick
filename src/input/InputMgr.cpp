@@ -722,7 +722,6 @@ void c_InputMgr::Process ()
         }
 
         bool aBlankTimerIsRunning = false;
-        bool aDmxOutputTimerIsRunning = false;
         for (auto & CurrentInput : InputChannelDrivers)
         {
             if(nullptr == CurrentInput.pInputChannelDriver || aBlankTimerIsRunning)
@@ -739,11 +738,6 @@ void c_InputMgr::Process ()
                 aBlankTimerIsRunning = true;
                 // break;
             }
-
-            if (!DmxOutputTimerHasExpired())
-            {
-                aDmxOutputTimerIsRunning = true;
-            }
         }
 
         if (false == aBlankTimerIsRunning && config.BlankDelay != 0)
@@ -753,9 +747,19 @@ void c_InputMgr::Process ()
             RestartBlankTimer (InputSecondaryChannelId);
         } // ALL blank timers have expired
 
+        bool aDmxOutputTimerIsRunning = false;
+        for (auto & CurrentInput : InputChannelDrivers)
+        {
+            if(nullptr == CurrentInput.pInputChannelDriver || aDmxOutputTimerIsRunning)
+            {
+                continue;
+            }
+            
+            aDmxOutputTimerIsRunning = !DmxOutputTimerHasExpired();
+        }
+
         if (false == aDmxOutputTimerIsRunning && DmxOutputActive)
         {
-            DEBUG_V(String("Shut down DMX Output now"));
             DmxOutputActive = false;
             digitalWrite(DmxEnablePin, LOW);
         }
