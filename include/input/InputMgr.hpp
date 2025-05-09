@@ -63,16 +63,10 @@ public:
     void DeleteConfig         () { FileMgr.DeleteFlashFile (ConfigFileName); }
     bool GetNetworkState      () { return IsConnected; }
     void GetDriverName        (String & Name) { Name = "InputMgr"; }
-    void RestartBlankTimer    (e_InputChannelIds Selector) 
-    { 
-        BlankEndTime[int(Selector)].StartTimer(config.BlankDelay * 1000, false); 
-        if (OutputsPaused)
-        {
-            OutputsPaused = false;
-            OutputMgr.PauseOutputs(OutputsPaused);
-        }
-    }
+    void RestartBlankTimer    (e_InputChannelIds Selector) { BlankEndTime[int(Selector)].StartTimer(config.BlankDelay * 1000, false); }
     bool BlankTimerHasExpired (e_InputChannelIds Selector) { return (BlankEndTime[int(Selector)].IsExpired()); }
+    void RestartDmxOutputTimer();
+    bool DmxOutputTimerHasExpired () { return (DmxOutputEndTimer.IsExpired()); }
     void ProcessButtonActions (c_ExternalInput::InputValue_t value);
 
     enum e_InputType
@@ -128,12 +122,14 @@ private:
     bool   rebootNeeded = false;
 
     FastTimer BlankEndTime[InputChannelId_End];
+    FastTimer DmxOutputEndTimer;
 
 #   define    FPP_TICKER_PERIOD_MS 25
     Ticker    MsTicker;
     uint32_t  LastTickerTimeStampMS = 0;
 
-    bool OutputsPaused = false;
+    bool DmxOutputActive = true;
+    gpio_num_t DmxEnablePin = gpio_num_t(0);
 
 }; // c_InputMgr
 

@@ -281,6 +281,7 @@ void c_InputDDP::ProcessReceivedData (DDP_packet_t & Packet)
         OutputMgr.WriteChannelData(InputBufferOffset, AdjPacketDataLength, &Data[0]);
 
         InputMgr.RestartBlankTimer (GetInputChannelId ());
+        InputMgr.RestartDmxOutputTimer();
 
     } while (false);
 

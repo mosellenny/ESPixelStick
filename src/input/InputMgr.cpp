@@ -126,6 +126,10 @@ c_InputMgr::c_InputMgr ()
         ++pInputChannelDriversIndex;
     }
 
+    // initialize dmx pin
+    ResetGpio(DmxEnablePin);
+    pinMode(DmxEnablePin, OUTPUT);
+
 } // c_InputMgr
 
 //-----------------------------------------------------------------------------
@@ -718,6 +722,7 @@ void c_InputMgr::Process ()
         }
 
         bool aBlankTimerIsRunning = false;
+        bool aDmxOutputTimerIsRunning = false;
         for (auto & CurrentInput : InputChannelDrivers)
         {
             if(nullptr == CurrentInput.pInputChannelDriver || aBlankTimerIsRunning)
@@ -728,11 +733,16 @@ void c_InputMgr::Process ()
             CurrentInput.pInputChannelDriver->Process ();
             // DEBUG_V(String("pInputChannelDriver:Done  0x") + String(uint32_t(CurrentInput.pInputChannelDriver), HEX));
 
-            if (!BlankTimerHasExpired (CurrentInput.pInputChannelDriver->GetInputChannelId()))
+            if (!BlankTimerHasExpired(CurrentInput.pInputChannelDriver->GetInputChannelId()))
             {
                 // DEBUG_V (String ("Blank Timer is running: ") + String (CurrentInput.pInputChannelDriver->GetInputChannelId ()));
                 aBlankTimerIsRunning = true;
                 // break;
+            }
+
+            if (!DmxOutputTimerHasExpired())
+            {
+                aDmxOutputTimerIsRunning = true;
             }
         }
 
@@ -740,15 +750,15 @@ void c_InputMgr::Process ()
         {
             // DEBUG_V("Clear Input Buffer");
             OutputMgr.ClearBuffer();
-            // Why do we need to restart the BlankTimer after blanking
-            // We restart it when we recieve data
-            // RestartBlankTimer (InputSecondaryChannelId);
-            if (!OutputsPaused)
-            {
-                OutputsPaused = true;
-                OutputMgr.PauseOutputs(OutputsPaused);
-            }
+            RestartBlankTimer (InputSecondaryChannelId);
         } // ALL blank timers have expired
+
+        if (false == aDmxOutputTimerIsRunning && DmxOutputActive)
+        {
+            DEBUG_V("Shut down DMX Output now");
+            DmxOutputActive = false;
+            digitalWrite(DmxEnablePin, LOW);
+        }
 
         if (rebootNeeded)
         {
@@ -1059,6 +1069,16 @@ void c_InputMgr::NetworkStateChanged (bool _IsConnected)
 
     // DEBUG_END;
 } // NetworkStateChanged
+
+//-----------------------------------------------------------------------------
+void c_InputMgr::RestartDmxOutputTimer() 
+{ 
+    DEBUG_V(String("Restarting DMX Output"));
+    DmxOutputEndTimer.StartTimer(10000, false);
+    
+    DmxOutputActive = true;
+    digitalWrite(DmxEnablePin, HIGH);
+} // RestartDmxOutputTimer
 
 // create a global instance of the Input channel factory
 c_InputMgr InputMgr;
