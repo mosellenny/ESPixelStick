@@ -743,7 +743,11 @@ void c_InputMgr::Process ()
             // Why do we need to restart the BlankTimer after blanking
             // We restart it when we recieve data
             // RestartBlankTimer (InputSecondaryChannelId);
-            OutputMgr.PauseOutputs(true);
+            if (!OutputsPaused)
+            {
+                OutputsPaused = true;
+                OutputMgr.PauseOutputs(OutputsPaused);
+            }
         } // ALL blank timers have expired
 
         if (rebootNeeded)

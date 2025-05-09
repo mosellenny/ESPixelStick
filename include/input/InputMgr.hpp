@@ -66,7 +66,11 @@ public:
     void RestartBlankTimer    (e_InputChannelIds Selector) 
     { 
         BlankEndTime[int(Selector)].StartTimer(config.BlankDelay * 1000, false); 
-        OutputMgr.PauseOutputs(false);
+        if (OutputsPaused)
+        {
+            OutputsPaused = false;
+            OutputMgr.PauseOutputs(OutputsPaused);
+        }
     }
     bool BlankTimerHasExpired (e_InputChannelIds Selector) { return (BlankEndTime[int(Selector)].IsExpired()); }
     void ProcessButtonActions (c_ExternalInput::InputValue_t value);
@@ -128,6 +132,8 @@ private:
 #   define    FPP_TICKER_PERIOD_MS 25
     Ticker    MsTicker;
     uint32_t  LastTickerTimeStampMS = 0;
+
+    bool OutputsPaused = false;
 
 }; // c_InputMgr
 
