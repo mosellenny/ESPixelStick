@@ -34,7 +34,9 @@ class c_InputE131 : public c_InputCommon
     static const char       ConfigFileName[];
     static const uint8_t    MAX_NUM_UNIVERSES = (OM_MAX_NUM_CHANNELS / UNIVERSE_MAX) + 1;
 
-    ESPAsyncE131  * e131 = nullptr; ///< ESPAsyncE131
+   ESPAsyncE131  * e131 = nullptr; ///< ESPAsyncE131
++  bool            e131Enabled = false;  ///< true, wenn wir erfolgreich Kanäle registriert haben
+
 
     /// JSON configuration parameters
     uint16_t    startUniverse              = 1;    ///< Universe to listen for
